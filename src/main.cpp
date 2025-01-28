@@ -25,8 +25,7 @@ void loop() {
     tx_buf[tx_idx] = (char)USBSERIAL.read();
     USBSERIAL.print(tx_buf[tx_idx]);
     if (tx_buf[tx_idx] == '\n' || tx_buf[tx_idx] == '\r') {
-      USBSERIAL.println();
-      USBSERIAL.println("Sending...");
+      USBSERIAL.println("\n[INFO] Message sent");
       USBSERIAL.println();
       for (uint8_t i = 0; i < (tx_idx + 1); ++i) {
         HWSERIAL.print(tx_buf[i]);
@@ -40,7 +39,7 @@ void loop() {
   if (HWSERIAL.available()) {
     rx_buf[rx_idx] = (char)HWSERIAL.read();
     if (rx_buf[rx_idx] == '\n' || rx_buf[rx_idx] == '\r') {
-      Serial.println("MSG received: ");
+      Serial.println("\n[INFO] Message received");
       for (uint8_t i = 0; i < (rx_idx + 1); ++i) {
         USBSERIAL.print(rx_buf[i]);
       }
