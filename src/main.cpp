@@ -2,7 +2,7 @@
 
 uint32_t count = 0;
 
-#define HWSERIAL Serial1
+#define HWSERIAL Serial2
 #define USBSERIAL Serial
 
 void setup() {
